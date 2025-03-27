@@ -54,7 +54,7 @@ if st.button('🔍 Predict', use_container_width=True):
     }
 
     # Call the FastAPI backend
-    response = requests.post('http://localhost:8000/predict', json=input_data)
+    response = requests.post('https://mlops-fastapi-backend.onrender.com/predict', json=input_data)
     prediction = response.json()['predictions'][0]
 
     # Section 5: Display predicted class

@@ -106,3 +106,18 @@ streamlit run app.py
 
 ---
 
+
+
+# commands backup:
+```
+cd mnt/c/Users/rvhoo/My\ Documents/projects/MLopsShowcase/components/
+
+docker build -f Dockerfile -t robinvhoorn/mlops-showcase-download_data:latest .
+docker push robinvhoorn/mlops-showcase-download_data:latest
+
+docker build -f Dockerfile -t robinvhoorn/mlops-showcase-train:latest .
+docker push robinvhoorn/mlops-showcase-train:latest
+
+docker build -f Dockerfile -t robinvhoorn/mlops-showcase-evaluate:latest .
+docker push robinvhoorn/mlops-showcase-evaluate:latest
+```

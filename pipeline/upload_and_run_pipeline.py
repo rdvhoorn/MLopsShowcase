@@ -20,8 +20,7 @@ def upload_pipeline(git_sha: str):
     # Start a new run
     run_name = f"{pipeline_version_name}-run"
     client.create_run_from_pipeline_package(
-        pipeline_package_path="iris_pipeline.yaml",
-        arguments={},
+        pipeline_file="iris_pipeline.yaml",
         run_name=run_name
     )
 

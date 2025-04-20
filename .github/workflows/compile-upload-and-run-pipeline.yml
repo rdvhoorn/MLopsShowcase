@@ -1,4 +1,4 @@
-name: Compile and Upload Pipeline
+name: Compile, Upload and Run Kubeflow Pipeline Locally
 
 on:
   push:
@@ -38,7 +38,7 @@ jobs:
     - name: Upload to Kubeflow
       run: |
         GIT_SHA=$(git rev-parse --short HEAD)
-        python pipeline/upload_pipeline.py --git_sha $GIT_SHA
+        python pipeline/upload_and_run_pipeline.py --git_sha $GIT_SHA
         
     - name: Cleanup
       run: |

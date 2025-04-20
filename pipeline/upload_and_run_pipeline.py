@@ -11,7 +11,7 @@ def upload_pipeline(git_sha: str):
     pipeline_version_name = f"{pipeline_name}-{git_sha}"
 
     # Upload the pipeline
-    client.upload_pipeline(
+    client.upload_pipeline_version(
         pipeline_package_path="iris_pipeline.yaml",
         pipeline_version_name=pipeline_version_name,
         pipeline_name=pipeline_name

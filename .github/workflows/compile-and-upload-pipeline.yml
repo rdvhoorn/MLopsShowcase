@@ -1,0 +1,45 @@
+name: Compile and Upload Pipeline
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'pipeline/**'
+      - '.github/workflows/compile-and-upload-pipeline.yml'
+  workflow_dispatch:
+
+env:
+  KFP_USER: ${{ secrets.KFP_USER }}
+  KFP_PASSWORD: ${{ secrets.KFP_PASSWORD }}
+
+jobs:
+  compile-and-upload:
+    runs-on: self-hosted
+    
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install kfp
+        
+    - name: Compile pipeline
+      run: |
+        python pipeline/pipeline.py
+        
+    - name: Upload to Kubeflow
+      run: |
+        GIT_SHA=$(git rev-parse --short HEAD)
+        python pipeline/upload_pipeline.py --git_sha $GIT_SHA
+        
+    - name: Cleanup
+      run: |
+        rm -f iris_pipeline.yaml

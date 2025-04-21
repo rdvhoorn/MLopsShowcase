@@ -48,4 +48,5 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Upload pipeline to Kubeflow with version from git SHA")
     parser.add_argument("--git_sha", required=True, help="Git SHA to use as pipeline version")
     args = parser.parse_args()
+
     upload_pipeline(git_sha=args.git_sha)

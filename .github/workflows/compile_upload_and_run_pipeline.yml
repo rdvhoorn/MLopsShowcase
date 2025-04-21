@@ -32,7 +32,7 @@ jobs:
         pip install kfp python-dotenv
 
     - name: Load .env # load local .env file. 
-      uses: ko1nksm/dotenv-action@v3
+      uses: falti/dotenv-action@v1.1.4
 
     - name: Compile pipeline
       run: |

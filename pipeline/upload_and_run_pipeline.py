@@ -24,6 +24,8 @@ def upload_pipeline(git_sha: str):
     
     client = Client(
         host=host,
+        namespace=namespace,
+        existing_token=os.environ["KFP_BEARER_TOKEN"]
     )
 
     pipeline_name = "iris-pipeline"
@@ -35,13 +37,15 @@ def upload_pipeline(git_sha: str):
         pipeline_version_name=pipeline_version_name,
         pipeline_name=pipeline_name
     )
+
+    experiment = client.create_experiment(name="iris-experiment", namespace=namespace)
     
     # Start a new run
     run_name = f"{pipeline_version_name}-run"
     client.create_run_from_pipeline_package(
+        experiment_id=experiment.experiment_id,
         pipeline_file="iris_pipeline.yaml",
-        run_name=run_name,
-        namespace=namespace
+        run_name=run_name
     )
 
 if __name__ == "__main__":

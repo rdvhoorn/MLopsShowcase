@@ -10,7 +10,8 @@ on:
 
 env:
   KFP_USER: ${{ secrets.KFP_USER }}
-  KFP_PASSWORD: ${{ secrets.KFP_PASSWORD }}
+  KFP_PASSWORD: ${{ secrets.KFP_PASSWORD }}`
+  KFP_BEARER_TOKEN: ${{ secrets.KFP_BEARER_TOKEN }}
   KUBEFLOW_NAMESPACE: kubeflow-user-example-com
   KFP_HOST: http://localhost:8888 
 

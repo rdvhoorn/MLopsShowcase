@@ -1,10 +1,29 @@
 from kfp import Client
 import os
 import argparse
+from dotenv import load_dotenv
+
+class EnvironmentError(Exception):
+    """Raised when required environment variables are missing"""
+    pass
+
+def get_required_env_var(name: str) -> str:
+    """Get a required environment variable or raise an error if not set"""
+    value = os.getenv(name)
+    if not value:
+        raise EnvironmentError(f"Required environment variable {name} is not set")
+    return value
 
 def upload_pipeline(git_sha: str):
+    # Load environment variables from .env file
+    load_dotenv()
+    
+    # Get configuration from environment variables
+    namespace = get_required_env_var('KUBEFLOW_NAMESPACE')
+    host = get_required_env_var('KFP_HOST')
+    
     client = Client(
-        host="http://localhost:8888",
+        host=host,
     )
 
     pipeline_name = "iris-pipeline"
@@ -21,7 +40,8 @@ def upload_pipeline(git_sha: str):
     run_name = f"{pipeline_version_name}-run"
     client.create_run_from_pipeline_package(
         pipeline_file="iris_pipeline.yaml",
-        run_name=run_name
+        run_name=run_name,
+        namespace=namespace
     )
 
 if __name__ == "__main__":

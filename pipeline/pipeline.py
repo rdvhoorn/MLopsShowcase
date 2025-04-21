@@ -9,7 +9,7 @@ def download_data_op(
     test_data: Output[Dataset]
 ):
     return dsl.ContainerSpec(
-        image="ghcr.io/robinvhoorn/mlops-showcase/download_data:latest",
+        image="ghcr.io/rdvhoorn/mlopsshowcase/download_data:latest",
         command=["python", "download_data.py"],
         args=[
             "--train_data_path", train_data.path,
@@ -23,7 +23,7 @@ def train_op(
     model: Output[Model]
 ):
     return dsl.ContainerSpec(
-        image="ghcr.io/robinvhoorn/mlops-showcase/train:latest",
+        image="ghcr.io/rdvhoorn/mlopsshowcase/train:latest",
         command=["python", "train.py"],
         args=[
             "--train_data_path", train_data.path,
@@ -38,7 +38,7 @@ def evaluate_op(
     metrics: Output[Metrics]
 ):
     return dsl.ContainerSpec(
-        image="ghcr.io/robinvhoorn/mlops-showcase/evaluate:latest",
+        image="ghcr.io/rdvhoorn/mlopsshowcase/evaluate:latest",
         command=["python", "evaluate.py"],
         args=[
             "--model_path", model.path,

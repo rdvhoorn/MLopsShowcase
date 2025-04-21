@@ -5,7 +5,7 @@ on:
     branches: [ main ]
     paths:
       - 'pipeline/**'
-      - '.github/workflows/compile-and-upload-pipeline.yml'
+      - '.github/workflows/compile-upload-and-run-pipeline.yml'
   workflow_dispatch:
 
 env:

@@ -1,0 +1,23 @@
+name: Update Local Server After Image Push
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'frontend/**'
+      - 'backend/**'
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Pull newest images
+        run: |
+          docker compose pull
+
+      - name: Recreate running services
+        run: |
+          cd server
+          docker compose up -d --no-deps --build backend
+          docker compose up -d --no-deps --build frontend

@@ -17,10 +17,10 @@ jobs:
 
       - name: Pull newest images
         run: |
+          cd server
           docker compose pull
 
       - name: Recreate running services
         run: |
-          cd server
           docker compose up -d --no-deps --build backend
           docker compose up -d --no-deps --build frontend

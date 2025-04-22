@@ -36,8 +36,9 @@ This project demonstrates an **end-to-end machine learning pipeline** using **Ku
 The goal of this project is not to make a very interesting data science pipeline, but to approximate a real-life dev&prod pipeline with proper CI/CD, with kubeflow running locally. The project is still in progress. So there is still gaps etc.
 
 Currently on the to-do list:
-- setup proper dev environment.
 - add automated deployment.
+- add volume for model to simulate blob / registry.
+- setup proper dev environment.
 - integrate mlflow back into the automated pipeline.
 - auto deploy new model if it outperforms. 
 - automate backend and frontend deployment to HF spaces and render.

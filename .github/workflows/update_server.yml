@@ -2,7 +2,7 @@ name: Update Local Server After Image Push
 
 on:
   workflow_run:
-    workflows: ["Build and Push Frontend", "Build and Push Backend"]
+    workflows: ["Build and Push Frontend Docker Image", "Build and Push Backend Docker Image"]
     types:
       - completed
 

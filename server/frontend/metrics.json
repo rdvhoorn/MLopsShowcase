@@ -1,5 +1,5 @@
 {
-    "Accuracy": 0.95,
+    "Accuracy": 0.99,
     "Precision": 0.94,
     "Recall": 0.93,
     "F1 Score": 0.94

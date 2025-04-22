@@ -2,9 +2,7 @@ version: '1.0'
 
 services:
   backend:
-    build: 
-      context: ./backend
-      dockerfile: Dockerfile
+    image: ghcr.io/robinvhoorn/mlopsshowcase/backend:latest
     ports:
       - "9000:9000"
     environment:
@@ -18,9 +16,7 @@ services:
       - ./backend/models:/app/models
 
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
+    image: ghcr.io/robinvhoorn/mlopsshowcase/frontend:latest
     ports:
       - "80:80"
     depends_on:

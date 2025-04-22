@@ -41,3 +41,4 @@ Currently on the to-do list:
 - integrate mlflow back into the automated pipeline.
 - auto deploy new model if it outperforms. 
 - automate backend and frontend deployment to HF spaces and render.
+- Add a local Nginx reverse proxy for extra realism (e.g. /api + /app)

@@ -14,7 +14,7 @@ BACKEND_URL = os.getenv('BACKEND_URL', 'http://localhost:9000')
 METRICS_PATH = os.getenv('METRICS_PATH', 'metrics.json')
 
 # Section 1: Title + brief description
-st.title('Super cool Prediction App')
+st.title('Super coolio Prediction App')
 st.write('This app predicts the class of an Iris flower based on its features.')
 
 # Section 2: Model metrics

@@ -2,7 +2,7 @@ version: '1.0'
 
 services:
   backend:
-    image: ghcr.io/robinvhoorn/mlopsshowcase/backend:latest
+    image: ghcr.io/rdvhoorn/mlopsshowcase/backend:latest
     ports:
       - "9000:9000"
     environment:
@@ -16,7 +16,7 @@ services:
       - ./backend/models:/app/models
 
   frontend:
-    image: ghcr.io/robinvhoorn/mlopsshowcase/frontend:latest
+    image: ghcr.io/rdvhoorn/mlopsshowcase/frontend:latest
     ports:
       - "80:80"
     depends_on:
